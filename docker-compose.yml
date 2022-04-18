@@ -1,0 +1,35 @@
+version: "3"
+
+networks:
+  queue:
+    driver: bridge
+
+services: 
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: queue-postgres
+    restart: always
+    environment:
+      - POSTGRESQL_POSTGRES_PASSWORD=${DB_PASS_ROOT}
+      - POSTGRESQL_DATABASE=${DB_NAME} 
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASS}
+    networks: 
+      - queue
+     
+  app:
+    image: node:current-alpine
+    container_name: queue-server
+    ports:
+      - "3337:3337"
+    working_dir: /usr/app
+    volumes: 
+      - .:/usr/app
+    command: sh -c "yarn && yarn build && yarn start" 
+    restart: always
+    networks: 
+      - queue
+
+
+
+    

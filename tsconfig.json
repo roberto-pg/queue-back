@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es6"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}

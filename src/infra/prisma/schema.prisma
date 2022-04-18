@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Queue {
+  id           String  @id @default(uuid())
+  title        String
+  abbreviation String
+  priority     Int
+  Order        Order[]
+
+  @@map("queues")
+}
+
+model Order {
+  id        String   @id @default(uuid())
+  queue_id  String
+  position  Int
+  timestamp DateTime
+  status    String
+  Queue     Queue?   @relation(fields: [queue_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("orders")
+}
