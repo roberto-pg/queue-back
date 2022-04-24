@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-export type Order = {
+export type OrderEntity = {
   id?: string
   queue_id: string
   position: number

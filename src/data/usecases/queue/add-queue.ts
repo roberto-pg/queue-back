@@ -1,5 +1,5 @@
+import { QueueModel } from '@/data/models'
 import { QueueRepository } from '@/data/protocols/queue'
-import { Queue } from '@/domain/entities'
 import { AddQueueUseCase } from '@/domain/protocol'
 
 export class AddQueueUseCaseImpl implements AddQueueUseCase {
@@ -9,7 +9,7 @@ export class AddQueueUseCaseImpl implements AddQueueUseCase {
     title: string,
     abbreviation: string,
     priority: number
-  ): Promise<Queue> {
+  ): Promise<QueueModel> {
     const queue = this.queueRepository.addQueue(title, abbreviation, priority)
 
     return queue

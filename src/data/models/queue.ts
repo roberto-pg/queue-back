@@ -1,3 +1,3 @@
-import { Queue } from '@/domain/entities'
+import { QueueEntity } from '@/domain/entities'
 
-export type QueueModel = Queue
+export type QueueModel = QueueEntity

@@ -1,4 +1,4 @@
-export type Queue = {
+export type QueueEntity = {
   id?: string
   title: string
   abbreviation: string

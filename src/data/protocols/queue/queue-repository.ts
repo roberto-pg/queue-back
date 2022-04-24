@@ -6,4 +6,6 @@ export interface QueueRepository {
     abbreviation: string,
     priority: number
   ) => Promise<QueueModel>
+
+  load: () => Promise<QueueModel[]>
 }

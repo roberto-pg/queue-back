@@ -19,18 +19,14 @@ export class QueueRepositoryImpl implements QueueRepository {
       }
     })
 
-    // const queueTeste = {
-    //   title: queue.title,
-    //   abbreviation: queue.abbreviation,
-    //   priority: queue.priority
-    // }
-
-    io.emit('new_message', queue)
-
-    io.on('new_message', (message) => {
-      console.log(message)
-    })
-
     return queue
+  }
+
+  async load(): Promise<QueueModel[]> {
+    const queues = await this.prismaServer.connectPrisma().queue.findMany()
+
+    io.emit('load_queues', queues)
+
+    return queues
   }
 }

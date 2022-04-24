@@ -5,8 +5,6 @@ import setupRoutes from '@/main/config/routes'
 export const setupApp = (): Express => {
   const app = express()
 
-  app.use(express.static('./public'))
-
   setupMiddlewares(app)
   setupRoutes(app)
 
