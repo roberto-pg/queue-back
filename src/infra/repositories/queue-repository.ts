@@ -31,4 +31,16 @@ export class QueueRepositoryImpl implements QueueRepository {
 
     return queues
   }
+
+  async deleteQueueById(id: string): Promise<string> {
+    const queue = await this.prismaServer.connectPrisma().queue.delete({
+      where: {
+        id
+      }
+    })
+
+    await this.load()
+
+    return queue.id
+  }
 }

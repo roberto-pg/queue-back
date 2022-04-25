@@ -8,4 +8,6 @@ export interface QueueRepository {
   ) => Promise<QueueModel>
 
   load: () => Promise<QueueModel[]>
+
+  deleteQueueById: (id: string) => Promise<string>
 }
