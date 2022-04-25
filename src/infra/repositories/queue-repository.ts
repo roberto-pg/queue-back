@@ -19,6 +19,8 @@ export class QueueRepositoryImpl implements QueueRepository {
       }
     })
 
+    await this.load()
+
     return queue
   }
 
