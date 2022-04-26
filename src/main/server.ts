@@ -1,8 +1,8 @@
 import 'module-alias/register'
 import http from 'http'
 import { Server } from 'socket.io'
+import { setupApp } from './config/app'
 import { env } from '@/main/config/env'
-import { setupApp } from '@/main/config/app'
 
 const app = setupApp()
 

@@ -1,6 +1,6 @@
 import { QueueModel } from '@/data/models'
-import { LoadQueuesUseCase } from '@/domain/protocol/load-queues'
-import { QueueRepository } from '../../protocols/queue/queue-repository'
+import { QueueRepository } from '@/data/protocols/queue'
+import { LoadQueuesUseCase } from '@/domain/protocol'
 
 export class LoadQueuesUseCaseImpl implements LoadQueuesUseCase {
   constructor(private readonly queueRepository: QueueRepository) {}

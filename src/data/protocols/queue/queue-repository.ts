@@ -1,4 +1,4 @@
-import { QueueModel } from '@/data/models/queue'
+import { QueueModel } from '@/data/models'
 
 export interface QueueRepository {
   addQueue: (

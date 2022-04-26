@@ -1,7 +1,8 @@
-import { LoadQueuesUseCase } from '@/domain/protocol/load-queues'
-import { Controller, HttpResponse } from '@/presentation/protocols'
-import { QueueViewModel } from '@/presentation/view_models'
-import { serverSuccess, serverError } from '../helpers/http-helper'
+import { LoadQueuesUseCase } from '@/domain/protocol'
+import { serverError, serverSuccess } from '@/presentation/helpers'
+import { Controller } from '@/presentation/protocols/controller'
+import { HttpResponse } from '@/presentation/protocols/http'
+import { QueueViewModel } from '@/presentation/view-models'
 
 export class LoadQueuesController implements Controller {
   constructor(private readonly loadQueuesUseCase: LoadQueuesUseCase) {}

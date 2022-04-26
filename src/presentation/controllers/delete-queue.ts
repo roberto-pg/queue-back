@@ -1,6 +1,7 @@
-import { Controller, HttpResponse } from '@/presentation/protocols'
-import { DeleteQueueUseCase } from '../../domain/protocol/delete-queue'
-import { serverSuccess, serverError } from '../helpers/http-helper'
+import { DeleteQueueUseCase } from '@/domain/protocol'
+import { serverError, serverSuccess } from '@/presentation/helpers'
+import { Controller } from '@/presentation/protocols/controller'
+import { HttpResponse } from '@/presentation/protocols/http'
 
 type DeleteRequest = {
   id: string

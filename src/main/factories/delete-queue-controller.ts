@@ -1,8 +1,8 @@
 import { DeleteQueueUseCaseImpl } from '@/data/usecases/queue'
 import { PrismaServer } from '@/infra/db/postgres'
 import { QueueRepositoryImpl } from '@/infra/repositories'
-import { Controller } from '@/presentation/protocols'
-import { DeleteQueueController } from '../../presentation/controllers/delete-queue'
+import { DeleteQueueController } from '@/presentation/controllers'
+import { Controller } from '@/presentation/protocols/controller'
 
 export const deleteQueueController = (): Controller => {
   const prisma = new PrismaServer()

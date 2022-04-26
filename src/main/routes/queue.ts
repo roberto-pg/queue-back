@@ -1,6 +1,9 @@
 import { adaptRoute } from '@/main/adapters'
-import { deleteQueueController, loadQueuesController } from '@/main/factories'
-import { addQueueController } from '@/main/factories/add-queue-controller'
+import {
+  addQueueController,
+  deleteQueueController,
+  loadQueuesController
+} from '@/main/factories'
 import { Router } from 'express'
 
 export default (router: Router): void => {
