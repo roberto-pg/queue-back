@@ -1,7 +1,7 @@
 import { customException } from '@/data/errors'
 import { QueueModel } from '@/data/models'
 import { QueueRepository } from '@/data/protocols/queue'
-import { AddQueueUseCase } from '@/domain/protocol'
+import { AddQueueUseCase } from '@/domain/protocols/queue'
 
 export class AddQueueUseCaseImpl implements AddQueueUseCase {
   constructor(private readonly queueRepository: QueueRepository) {}

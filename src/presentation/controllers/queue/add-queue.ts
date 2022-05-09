@@ -1,5 +1,5 @@
 import { customException } from '@/data/errors'
-import { AddQueueUseCase } from '@/domain/protocol'
+import { AddQueueUseCase } from '@/domain/protocols/queue'
 import { serverError, serverSuccess } from '@/presentation/helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'

@@ -3,7 +3,7 @@ import {
   addQueueController,
   deleteQueueController,
   loadQueuesController
-} from '@/main/factories'
+} from '@/main/factories/queue'
 import { Router } from 'express'
 
 export default (router: Router): void => {

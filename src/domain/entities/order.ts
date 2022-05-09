@@ -4,11 +4,11 @@ export type OrderEntity = {
   queue_id: string
   position: number
   timestamp: Date
-  status: OrderStatus
+  status: string
 }
 
-enum OrderStatus {
-  waiting,
-  attending,
-  notAnshered
-}
+// enum OrderStatus {
+//   waiting,
+//   attending,
+//   notAnshered
+// }

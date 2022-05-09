@@ -16,6 +16,7 @@ const io = new Server(httpServer, {
 
 io.on('connection', (socket) => {
   console.log(`Usuário conectado no socket ${socket.id}`)
+  socket.on('disconnect', () => console.log('Usuário desconectado'))
 })
 
 httpServer.listen(env.port, () =>

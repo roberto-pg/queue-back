@@ -1,4 +1,4 @@
-import { LoadQueuesUseCase } from '@/domain/protocol'
+import { LoadQueuesUseCase } from '@/domain/protocols/queue'
 import { serverError, serverSuccess } from '@/presentation/helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
