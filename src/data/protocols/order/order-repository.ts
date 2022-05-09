@@ -7,4 +7,6 @@ export interface OrderRepository {
     timestamp: string,
     status: string
   ) => Promise<OrderModel>
+  loadOrders: () => Promise<OrderModel[]>
+  loadOrdersByQueueId: (queueId: string) => Promise<OrderModel[]>
 }

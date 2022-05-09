@@ -7,7 +7,7 @@ import { QueueViewModel } from '@/presentation/view-models'
 export class LoadQueuesController implements Controller {
   constructor(private readonly loadQueuesUseCase: LoadQueuesUseCase) {}
 
-  async handle(): Promise<HttpResponse<QueueViewModel>> {
+  async handle(): Promise<HttpResponse<QueueViewModel[]>> {
     try {
       const queues = await this.loadQueuesUseCase.load()
       return serverSuccess(queues)
