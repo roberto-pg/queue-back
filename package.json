@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --exit-child --transpile-only --ignore-watch node_modules src/main/server.ts",
     "build": "yarn tsc",
-    "start": "node dist/main/server.js"
+    "start": "yarn tsc && node dist/main/server.js"
   },
   "dependencies": {
     "@prisma/client": "^3.12.0",
