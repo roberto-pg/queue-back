@@ -1,7 +1,7 @@
-import '../util/module-alias'
+import './util/module-alias'
 import http from 'http'
 import { Server } from 'socket.io'
-import { setupApp } from './config/app'
+import { setupApp } from '@src/main/config/app'
 import { env } from '@src/main/config/env'
 
 const app = setupApp()
