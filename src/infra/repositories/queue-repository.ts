@@ -1,7 +1,7 @@
-import { QueueModel } from '@/data/models'
-import { QueueRepository } from '@/data/protocols/queue'
-import { HttpService } from '@/infra/protocols'
-import { io } from '@/main/server'
+import { QueueModel } from '@src/data/models'
+import { QueueRepository } from '@src/data/protocols/queue'
+import { HttpService } from '@src/infra/protocols'
+import { io } from '@src/main/server'
 
 export class QueueRepositoryImpl implements QueueRepository {
   constructor(private readonly prismaServer: HttpService) {}
@@ -15,8 +15,8 @@ export class QueueRepositoryImpl implements QueueRepository {
       data: {
         title,
         abbreviation,
-        priority
-      }
+        priority,
+      },
     })
 
     await this.load()
@@ -35,8 +35,8 @@ export class QueueRepositoryImpl implements QueueRepository {
   async deleteQueueById(id: string): Promise<string> {
     const queue = await this.prismaServer.connectPrisma().queue.delete({
       where: {
-        id
-      }
+        id,
+      },
     })
 
     await this.load()

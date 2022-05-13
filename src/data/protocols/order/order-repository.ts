@@ -1,4 +1,4 @@
-import { OrderModel } from '@/data/models/order'
+import { OrderModel } from '@src/data/models/order'
 
 export interface OrderRepository {
   addOrder: (

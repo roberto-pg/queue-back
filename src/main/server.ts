@@ -1,8 +1,8 @@
-import 'module-alias/register'
+import '../util/module-alias'
 import http from 'http'
 import { Server } from 'socket.io'
 import { setupApp } from './config/app'
-import { env } from '@/main/config/env'
+import { env } from '@src/main/config/env'
 
 const app = setupApp()
 
@@ -10,8 +10,8 @@ const httpServer = http.createServer(app)
 
 const io = new Server(httpServer, {
   cors: {
-    origin: '*'
-  }
+    origin: '*',
+  },
 })
 
 io.on('connection', (socket) => {

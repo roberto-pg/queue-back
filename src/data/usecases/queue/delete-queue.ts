@@ -1,5 +1,5 @@
-import { QueueRepository } from '@/data/protocols/queue'
-import { DeleteQueueUseCase } from '@/domain/protocols/queue'
+import { QueueRepository } from '@src/data/protocols/queue'
+import { DeleteQueueUseCase } from '@src/domain/protocols/queue'
 
 export class DeleteQueueUseCaseImpl implements DeleteQueueUseCase {
   constructor(private readonly queueRepository: QueueRepository) {}

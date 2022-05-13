@@ -1,4 +1,5 @@
-import { OrderEntity } from '../../entities/order'
+import { OrderEntity } from '@src/domain/entities'
+
 export interface AddOrderUseCase {
   add: (
     queueId: string,

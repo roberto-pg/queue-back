@@ -1,30 +1,19 @@
 {
-  "env": {
-    "es2021": true,
-    "node": true
-  },
+  "root": true,
   "extends": [
-    "standard",
-    "prettier"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "trailingComma": "none",
-        "semi": false
-      }
-    ],
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
     "camelcase": "off",
     "no-useless-constructor": "off",
     "no-use-before-define": "off"

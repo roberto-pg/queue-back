@@ -1,4 +1,4 @@
-import { OrderEntity } from '@/domain/entities'
+import { OrderEntity } from '@src/domain/entities'
 
 export interface LoadOrdersUseCase {
   load: () => Promise<OrderEntity[]>

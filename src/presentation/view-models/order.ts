@@ -1,4 +1,4 @@
-import { OrderEntity } from '@/domain/entities'
+import { OrderEntity } from '@src/domain/entities'
 
 export class OrderViewModel {
   static map(entity: OrderEntity): OrderViewModel {
@@ -7,7 +7,7 @@ export class OrderViewModel {
       queueId: entity.queue_id,
       position: entity.position,
       timestamp: entity.timestamp.toISOString(),
-      status: entity.status
+      status: entity.status,
     }
   }
 

@@ -1,8 +1,8 @@
-import { OrderRepository } from '@/data/protocols/order'
-import { OrderEntity } from '@/domain/entities'
-import { LoadOrdersByQueueIdUseCase } from '@/domain/protocols/order'
-import { VerifyQueueId } from '@/validation'
-import { customException } from '@/data/errors'
+import { OrderRepository } from '@src/data/protocols/order'
+import { OrderEntity } from '@src/domain/entities'
+import { LoadOrdersByQueueIdUseCase } from '@src/domain/protocols/order'
+import { VerifyQueueId } from '@src/validation'
+import { customException } from '@src/data/errors'
 
 export class LoadOrdersByQueueIdUseCaseImpl
   implements LoadOrdersByQueueIdUseCase

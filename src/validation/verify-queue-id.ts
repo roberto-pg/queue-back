@@ -1,4 +1,4 @@
-import { HttpService } from '@/infra/protocols'
+import { HttpService } from '@src/infra/protocols'
 
 export class VerifyQueueId {
   constructor(private readonly prismaServer: HttpService) {}
@@ -6,8 +6,8 @@ export class VerifyQueueId {
   async verifyQueueId(queueId: string) {
     const queue = await this.prismaServer.connectPrisma().queue.findUnique({
       where: {
-        id: queueId
-      }
+        id: queueId,
+      },
     })
     return queue
   }

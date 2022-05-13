@@ -1,9 +1,9 @@
-import { customException } from '@/data/errors'
-import { AddQueueUseCase } from '@/domain/protocols/queue'
-import { serverError, serverSuccess } from '@/presentation/helpers'
-import { Controller } from '@/presentation/protocols/controller'
-import { HttpResponse } from '@/presentation/protocols/http'
-import { QueueViewModel } from '@/presentation/view-models'
+import { customException } from '@src/data/errors'
+import { AddQueueUseCase } from '@src/domain/protocols/queue'
+import { serverError, serverSuccess } from '@src/presentation/helpers'
+import { Controller } from '@src/presentation/protocols/controller'
+import { HttpResponse } from '@src/presentation/protocols/http'
+import { QueueViewModel } from '@src/presentation/view-models'
 
 type AddQueueRequest = {
   title: string

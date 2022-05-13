@@ -1,8 +1,8 @@
-import { AddQueueUseCaseImpl } from '@/data/usecases/queue'
-import { PrismaServer } from '@/infra/db/postgres'
-import { QueueRepositoryImpl } from '@/infra/repositories'
-import { AddQueueController } from '@/presentation/controllers/queue'
-import { Controller } from '@/presentation/protocols/controller'
+import { AddQueueUseCaseImpl } from '@src/data/usecases/queue'
+import { PrismaServer } from '@src/infra/db/postgres'
+import { QueueRepositoryImpl } from '@src/infra/repositories'
+import { AddQueueController } from '@src/presentation/controllers/queue'
+import { Controller } from '@src/presentation/protocols/controller'
 
 export const addQueueController = (): Controller => {
   const prisma = new PrismaServer()

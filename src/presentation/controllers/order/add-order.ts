@@ -1,9 +1,9 @@
-import { AddOrderUseCase } from '@/domain/protocols/order'
-import { serverError, serverSuccess } from '@/presentation/helpers'
-import { Controller } from '@/presentation/protocols/controller'
-import { HttpResponse } from '@/presentation/protocols/http'
-import { OrderViewModel } from '@/presentation/view-models'
-import { customException } from '@/data/errors'
+import { AddOrderUseCase } from '@src/domain/protocols/order'
+import { serverError, serverSuccess } from '@src/presentation/helpers'
+import { Controller } from '@src/presentation/protocols/controller'
+import { HttpResponse } from '@src/presentation/protocols/http'
+import { OrderViewModel } from '@src/presentation/view-models'
+import { customException } from '@src/data/errors'
 
 type AddOrderRequest = {
   queueId: string

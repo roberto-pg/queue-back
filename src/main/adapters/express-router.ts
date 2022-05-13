@@ -1,11 +1,11 @@
-import { Controller } from '@/presentation/protocols/controller'
+import { Controller } from '@src/presentation/protocols/controller'
 import { Request, Response } from 'express'
 
 export const adaptRoute = (controller: Controller) => {
   return async (request: Request, response: Response) => {
     const requestBody = {
       ...(request.body || {}),
-      ...(request.params || {})
+      ...(request.params || {}),
     }
 
     const httpResponse = await controller.handle(requestBody)

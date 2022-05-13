@@ -1,6 +1,6 @@
-import { OrderRepository } from '@/data/protocols/order'
-import { OrderEntity } from '@/domain/entities'
-import { LoadOrdersUseCase } from '@/domain/protocols/order'
+import { OrderRepository } from '@src/data/protocols/order'
+import { OrderEntity } from '@src/domain/entities'
+import { LoadOrdersUseCase } from '@src/domain/protocols/order'
 
 export class LoadOrdersUseCaseImpl implements LoadOrdersUseCase {
   constructor(private readonly orderRepository: OrderRepository) {}

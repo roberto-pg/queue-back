@@ -1,8 +1,8 @@
-import { Controller } from '@/presentation/protocols/controller'
-import { PrismaServer } from '@/infra/db/postgres'
-import { OrderRepositoryImpl } from '@/infra/repositories'
-import { AddOrderUseCaseImpl } from '@/data/usecases/order'
-import { AddOrderController } from '@/presentation/controllers/order'
+import { Controller } from '@src/presentation/protocols/controller'
+import { PrismaServer } from '@src/infra/db/postgres'
+import { OrderRepositoryImpl } from '@src/infra/repositories'
+import { AddOrderUseCaseImpl } from '@src/data/usecases/order'
+import { AddOrderController } from '@src/presentation/controllers/order'
 
 export const addOrderController = (): Controller => {
   const prisma = new PrismaServer()

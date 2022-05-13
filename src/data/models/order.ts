@@ -1,3 +1,3 @@
-import { OrderEntity } from '@/domain/entities'
+import { OrderEntity } from '@src/domain/entities'
 
 export type OrderModel = OrderEntity
