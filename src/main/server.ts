@@ -2,7 +2,6 @@ import './util/module-alias'
 import http from 'http'
 import { Server } from 'socket.io'
 import { setupApp } from '@src/main/config/app'
-import { env } from '@src/main/config/env'
 
 const app = setupApp()
 
@@ -18,9 +17,5 @@ io.on('connection', (socket) => {
   console.log(`Usuário conectado no socket ${socket.id}`)
   socket.on('disconnect', () => console.log('Usuário desconectado'))
 })
-
-httpServer.listen(env.port, () =>
-  console.log(`Server started at Port ${env.port}`)
-)
 
 export { httpServer, io }
