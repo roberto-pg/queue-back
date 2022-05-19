@@ -34,8 +34,15 @@ export class QueueRepositoryInMemory implements QueueRepository {
     return result
   }
 
-  load(): Promise<QueueEntity[]> {
-    throw customException('Unimplemented')
+  async load(): Promise<QueueEntity[]> {
+    this.queues.push({
+      id: uuid(),
+      title: 'Load queue',
+      abbreviation: 'LQ',
+      priority: 5,
+    })
+
+    return this.queues
   }
 
   deleteQueueById(id: string): Promise<string> {

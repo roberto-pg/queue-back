@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es2018",
     "moduleResolution": "node",
     "module": "commonjs",
     "lib": ["es2019"],
@@ -18,15 +18,16 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "useUnknownInCatchVariables": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"],
-      "@test/*": ["./test/*"]
+      "@src/*": ["./src/*"]
     },
     "rootDirs": ["./src", "./test"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["./src/**/*.ts", "./test/**/*.ts", "test/jest.config.js"],
-  "exclude": ["./node_modules/*", "./dist"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
