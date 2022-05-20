@@ -1,6 +1,5 @@
 import { QueueRepository } from '@src/data/protocols/queue'
 import { QueueEntity } from '@src/domain/entities'
-import { customException } from '@src/data/errors'
 import { QueueModel } from '@src/data/models'
 import { v4 as uuid } from 'uuid'
 
@@ -45,7 +44,23 @@ export class QueueRepositoryInMemory implements QueueRepository {
     return this.queues
   }
 
-  deleteQueueById(id: string): Promise<string> {
-    throw customException(id.toString())
+  async deleteQueueById(id: string): Promise<string> {
+    this.queues.push({
+      id: 'af19974c-09af-41f3-ae0a-cb2a14c5d102',
+      title: 'Will be deleted',
+      abbreviation: 'WD',
+      priority: 9,
+    })
+    let queueId: QueueModel[] = []
+
+    const index = this.queues.findIndex(function (queue) {
+      return queue.id === id
+    })
+
+    if (index !== -1) {
+      queueId = this.queues.splice(index, 1)
+    }
+
+    return queueId[0].id ?? ''
   }
 }
