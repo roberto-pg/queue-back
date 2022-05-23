@@ -3,7 +3,7 @@ import { QueueEntity } from '@src/domain/entities'
 import { QueueModel } from '@src/data/models'
 import { v4 as uuid } from 'uuid'
 
-export class QueueRepositoryInMemory implements QueueRepository {
+export class InMemoryQueueRepository implements QueueRepository {
   private queues: QueueModel[] = []
 
   async addQueue(
@@ -11,26 +11,19 @@ export class QueueRepositoryInMemory implements QueueRepository {
     abbreviation: string,
     priority: number
   ): Promise<QueueModel> {
-    let result: QueueModel = {
-      id: '',
-      title: '',
-      abbreviation: '',
-      priority: 0,
-    }
-    const queue = {
+    const queue: QueueModel = {
       title,
       abbreviation,
       priority,
     }
+
     Object.assign(queue, {
       id: uuid(),
     })
 
     this.queues.push(queue)
 
-    result = this.queues[0]
-
-    return result
+    return this.queues[0]
   }
 
   async load(): Promise<QueueEntity[]> {

@@ -7,7 +7,7 @@
     "dev": "ts-node-dev -r tsconfig-paths/register --exit-child --transpile-only --ignore-watch node_modules src/main/app.ts",
     "build": "yarn tsc -p tsconfig.build.json",
     "start": "yarn tsc -p tsconfig.build.json && node dist/src/main/app.js",
-    "test:unit": "jest",
+    "test": "jest",
     "test:e2e": "jest --config jest-e2e.config.ts"
   },
   "dependencies": {
