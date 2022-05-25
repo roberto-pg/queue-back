@@ -1,2 +1,2 @@
 export * from './queue'
-export * from './order'
+export * from './ticket'

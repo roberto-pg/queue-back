@@ -1,23 +1,23 @@
-import { AddOrderUseCase } from '@src/domain/protocols/order'
+import { AddTicketUseCase } from '@src/domain/protocols/ticket'
 import { serverError, serverSuccess } from '@src/presentation/helpers'
 import { Controller } from '@src/presentation/protocols/controller'
 import { HttpResponse } from '@src/presentation/protocols/http'
-import { OrderViewModel } from '@src/presentation/view-models'
+import { TicketViewModel } from '@src/presentation/view-models'
 import { customException } from '@src/data/errors'
 
-type AddOrderRequest = {
+type AddTicketRequest = {
   queueId: string
   position: number
   timestamp: string
   status: string
 }
 
-export class AddOrderController implements Controller {
-  constructor(private readonly addOrder: AddOrderUseCase) {}
+export class AddTicketController implements Controller {
+  constructor(private readonly addTicket: AddTicketUseCase) {}
 
   async handle(
-    request: AddOrderRequest
-  ): Promise<HttpResponse<OrderViewModel>> {
+    request: AddTicketRequest
+  ): Promise<HttpResponse<TicketViewModel>> {
     try {
       if (!request.queueId) {
         throw customException('Informe o Id da fila')
@@ -35,14 +35,14 @@ export class AddOrderController implements Controller {
         throw customException('Informe o status')
       }
 
-      const order = await this.addOrder.add(
+      const ticket = await this.addTicket.add(
         request.queueId,
         request.position,
         request.timestamp,
         request.status
       )
 
-      return serverSuccess(order)
+      return serverSuccess(ticket)
     } catch (error) {
       return serverError(error)
     }

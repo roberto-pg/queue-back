@@ -11,16 +11,16 @@ datasource db {
 }
 
 model Queue {
-  id           String  @id @default(uuid())
+  id           String   @id @default(uuid())
   title        String
   abbreviation String
   priority     Int
-  Order        Order[]
+  Ticket       Ticket[]
 
   @@map("queues")
 }
 
-model Order {
+model Ticket {
   id        String   @id @default(uuid())
   queue_id  String
   position  Int
@@ -28,5 +28,5 @@ model Order {
   status    String
   Queue     Queue?   @relation(fields: [queue_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@map("orders")
+  @@map("tickets")
 }
