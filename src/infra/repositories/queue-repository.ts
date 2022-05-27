@@ -25,7 +25,11 @@ export class QueueRepositoryImpl implements QueueRepository {
   }
 
   async load(): Promise<QueueModel[]> {
-    const queues = await this.prismaServer.connectPrisma().queue.findMany()
+    const queues = await this.prismaServer.connectPrisma().queue.findMany({
+      orderBy: {
+        priority: 'desc',
+      },
+    })
 
     io.emit('load_queues', queues)
 
