@@ -2,6 +2,7 @@ import { adaptRoute } from '@src/main/adapters'
 import {
   addTicketController,
   loadTicketsByQueueIdController,
+  loadTicketsByStatusController,
   loadTicketsControllers,
   removeTicketsController,
 } from '@src/main/factories/ticket'
@@ -16,6 +17,8 @@ export default (router: Router): void => {
     '/tickets-by-queue-id/:queueId',
     adaptRoute(loadTicketsByQueueIdController())
   )
+
+  router.get('/tickets-by-status', adaptRoute(loadTicketsByStatusController()))
 
   router.delete('/remove-tickets', adaptRoute(removeTicketsController()))
 }
