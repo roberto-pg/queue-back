@@ -20,7 +20,7 @@ describe('Create new queue', () => {
   })
 
   it('should be able to create a new queue', async () => {
-    const queue = await sut.add(title, abbreviation, priority)
+    const queue = await sut.call(title, abbreviation, priority)
 
     expect(queue).toHaveProperty('id')
     expect(queue.title).toBe('Cadeirante')

@@ -37,7 +37,7 @@ export class InMemoryQueueRepository implements QueueRepository {
     return this.queues
   }
 
-  async deleteQueueById(id: string): Promise<string> {
+  async removeQueueById(id: string): Promise<string> {
     this.queues.push({
       id: 'af19974c-09af-41f3-ae0a-cb2a14c5d102',
       title: 'Will be deleted',

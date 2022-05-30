@@ -12,7 +12,7 @@ export class LoadTicketsByQueueIdUseCaseImpl
     private readonly validate: VerifyQueueId
   ) {}
 
-  async load(queueId: string): Promise<TicketEntity[]> {
+  async call(queueId: string): Promise<TicketEntity[]> {
     const queue = await this.validate.verifyQueueId(queueId)
 
     if (!queue) {

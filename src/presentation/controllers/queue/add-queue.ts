@@ -30,7 +30,7 @@ export class AddQueueController implements Controller {
         throw customException('Informe a prioridade')
       }
 
-      const queue = await this.addQueue.add(
+      const queue = await this.addQueue.call(
         request.title,
         request.abbreviation,
         request.priority

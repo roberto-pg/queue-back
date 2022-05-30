@@ -6,7 +6,7 @@ import { AddQueueUseCase } from '@src/domain/protocols/queue'
 export class AddQueueUseCaseImpl implements AddQueueUseCase {
   constructor(private readonly queueRepository: QueueRepository) {}
 
-  async add(
+  async call(
     title: string,
     abbreviation: string,
     priority: number

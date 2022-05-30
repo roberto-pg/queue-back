@@ -17,7 +17,7 @@ export class LoadTicketsByQueueIdController implements Controller {
     request: TicketsByQueueRequest
   ): Promise<HttpResponse<TicketViewModel[]>> {
     try {
-      const tickets = await this.ticketsByQueueIdUseCase.load(request.queueId)
+      const tickets = await this.ticketsByQueueIdUseCase.call(request.queueId)
 
       return serverSuccess(TicketViewModel.mapCollection(tickets))
     } catch (error) {

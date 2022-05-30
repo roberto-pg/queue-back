@@ -9,4 +9,5 @@ export interface TicketRepository {
   ) => Promise<TicketModel>
   loadTickets: () => Promise<TicketModel[]>
   loadTicketsByQueueId: (queueId: string) => Promise<TicketModel[]>
+  removeTickets: () => Promise<string>
 }

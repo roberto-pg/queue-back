@@ -5,7 +5,7 @@ import { LoadQueuesUseCase } from '@src/domain/protocols/queue'
 export class LoadQueuesUseCaseImpl implements LoadQueuesUseCase {
   constructor(private readonly queueRepository: QueueRepository) {}
 
-  async load(): Promise<QueueModel[]> {
+  async call(): Promise<QueueModel[]> {
     const queues = await this.queueRepository.load()
     return queues
   }

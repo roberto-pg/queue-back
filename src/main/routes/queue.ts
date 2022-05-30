@@ -1,7 +1,7 @@
 import { adaptRoute } from '@src/main/adapters'
 import {
   addQueueController,
-  deleteQueueController,
+  removeQueueController,
   loadQueuesController,
 } from '@src/main/factories/queue'
 import { Router } from 'express'
@@ -11,5 +11,5 @@ export default (router: Router): void => {
 
   router.get('/queues', adaptRoute(loadQueuesController()))
 
-  router.delete('/delete/:id', adaptRoute(deleteQueueController()))
+  router.delete('/delete/:id', adaptRoute(removeQueueController()))
 }

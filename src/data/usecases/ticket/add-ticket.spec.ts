@@ -17,9 +17,9 @@ describe('Create new ticket', () => {
   })
 
   it('should be able to create a new ticket', async () => {
-    const ticket = await sut.add(queueId, position, timestamp, status)
+    const ticket = await sut.call(queueId, position, timestamp, status)
 
     expect(ticket).toHaveProperty('id')
-    expect(ticket.status).toBe('waiting')
+    expect(ticket.position).toBe(5)
   })
 })

@@ -35,7 +35,7 @@ export class AddTicketController implements Controller {
         throw customException('Informe o status')
       }
 
-      const ticket = await this.addTicket.add(
+      const ticket = await this.addTicket.call(
         request.queueId,
         request.position,
         request.timestamp,

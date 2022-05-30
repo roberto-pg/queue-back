@@ -1,7 +1,7 @@
 import { QueueEntity } from '@src/domain/entities'
 
 export interface AddQueueUseCase {
-  add: (
+  call: (
     title: string,
     abbreviation: string,
     priority: number

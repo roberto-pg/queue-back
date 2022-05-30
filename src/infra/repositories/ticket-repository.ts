@@ -39,4 +39,9 @@ export class TicketRepositoryImpl implements TicketRepository {
 
     return tickets
   }
+
+  async removeTickets(): Promise<string> {
+    await this.prismaServer.connectPrisma().ticket.deleteMany()
+    return 'Tickets removidos'
+  }
 }

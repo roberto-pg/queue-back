@@ -5,7 +5,7 @@ import { LoadTicketsUseCase } from '@src/domain/protocols/ticket'
 export class LoadTicketsUseCaseImpl implements LoadTicketsUseCase {
   constructor(private readonly ticketRepository: TicketRepository) {}
 
-  async load(): Promise<TicketEntity[]> {
+  async call(): Promise<TicketEntity[]> {
     const tickets = await this.ticketRepository.loadTickets()
 
     return tickets

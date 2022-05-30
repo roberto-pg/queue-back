@@ -3,6 +3,7 @@ import {
   addTicketController,
   loadTicketsByQueueIdController,
   loadTicketsControllers,
+  removeTicketsController,
 } from '@src/main/factories/ticket'
 import { Router } from 'express'
 
@@ -15,4 +16,6 @@ export default (router: Router): void => {
     '/tickets-by-queue-id/:queueId',
     adaptRoute(loadTicketsByQueueIdController())
   )
+
+  router.delete('/remove-tickets', adaptRoute(removeTicketsController()))
 }

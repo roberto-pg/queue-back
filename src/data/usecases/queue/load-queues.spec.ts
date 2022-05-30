@@ -13,7 +13,7 @@ describe('Load queues', () => {
   })
 
   it('should be able to return a list of queues', async () => {
-    const queues = await sut.load()
+    const queues = await sut.call()
 
     expect(queues.length).toBe(1)
     expect(queues).not.toEqual([{}])

@@ -35,4 +35,8 @@ export class InMemoryTicketRepository implements TicketRepository {
   async loadTicketsByQueueId(queueId: string): Promise<TicketModel[]> {
     throw customException('unimplemented')
   }
+
+  async removeTickets(): Promise<string> {
+    throw customException('unimplemented')
+  }
 }

@@ -1,7 +1,7 @@
 import { TicketEntity } from '@src/domain/entities'
 
 export interface AddTicketUseCase {
-  add: (
+  call: (
     queueId: string,
     position: number,
     timestamp: string,

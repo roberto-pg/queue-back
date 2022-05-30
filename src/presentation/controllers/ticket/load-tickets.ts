@@ -9,7 +9,7 @@ export class LoadTicketsController implements Controller {
 
   async handle(): Promise<HttpResponse<TicketViewModel[]>> {
     try {
-      const tickets = await this.loadTicketsUseCase.load()
+      const tickets = await this.loadTicketsUseCase.call()
 
       return serverSuccess(TicketViewModel.mapCollection(tickets))
     } catch (error) {

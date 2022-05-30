@@ -9,7 +9,7 @@ export class LoadQueuesController implements Controller {
 
   async handle(): Promise<HttpResponse<QueueViewModel[]>> {
     try {
-      const queues = await this.loadQueuesUseCase.load()
+      const queues = await this.loadQueuesUseCase.call()
       return serverSuccess(queues)
     } catch (error) {
       return serverError(error)
