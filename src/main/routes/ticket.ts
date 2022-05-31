@@ -18,7 +18,10 @@ export default (router: Router): void => {
     adaptRoute(loadTicketsByQueueIdController())
   )
 
-  router.get('/tickets-by-status', adaptRoute(loadTicketsByStatusController()))
+  router.get(
+    '/tickets-by-status/:queueId/:status',
+    adaptRoute(loadTicketsByStatusController())
+  )
 
   router.delete('/remove-tickets', adaptRoute(removeTicketsController()))
 }

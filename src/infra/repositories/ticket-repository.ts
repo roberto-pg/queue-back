@@ -1,6 +1,5 @@
 import { TicketModel } from '@src/data/models/ticket'
 import { TicketRepository } from '@src/data/protocols/ticket'
-import { TicketEntity } from '@src/domain/entities'
 import { HttpService } from '@src/infra/protocols'
 import { io } from '@src/main/server'
 
@@ -25,13 +24,13 @@ export class TicketRepositoryImpl implements TicketRepository {
     return ticket
   }
 
-  async loadTickets(): Promise<TicketEntity[]> {
+  async loadTickets(): Promise<TicketModel[]> {
     const tickets = await this.prismaServer.connectPrisma().ticket.findMany()
 
     return tickets
   }
 
-  async loadTicketsByQueueId(queueId: string): Promise<TicketEntity[]> {
+  async loadTicketsByQueueId(queueId: string): Promise<TicketModel[]> {
     const tickets = await this.prismaServer.connectPrisma().ticket.findMany({
       where: {
         queue_id: queueId,
@@ -41,15 +40,10 @@ export class TicketRepositoryImpl implements TicketRepository {
     return tickets
   }
 
-  async removeTickets(): Promise<string> {
-    await this.prismaServer.connectPrisma().ticket.deleteMany()
-    return 'Tickets removidos'
-  }
-
   async loadTicketsByStatus(
     queueId: string,
     status: string
-  ): Promise<TicketEntity[]> {
+  ): Promise<TicketModel[]> {
     const tickets = await this.prismaServer.connectPrisma().ticket.findMany({
       where: {
         queue_id: queueId,
@@ -60,5 +54,11 @@ export class TicketRepositoryImpl implements TicketRepository {
     io.emit('load_tickets', tickets)
 
     return tickets
+  }
+
+  async removeTickets(): Promise<string> {
+    await this.prismaServer.connectPrisma().ticket.deleteMany()
+
+    return 'Tickets removidos'
   }
 }

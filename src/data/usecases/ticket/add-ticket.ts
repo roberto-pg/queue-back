@@ -1,7 +1,7 @@
 import { TicketRepository } from '@src/data/protocols/ticket'
-import { TicketEntity } from '@src/domain/entities'
 import { AddTicketUseCase } from '@src/domain/protocols/ticket'
 import { customException } from '@src/data/errors'
+import { TicketModel } from '@src/data/models'
 
 export class AddTicketUseCaseImpl implements AddTicketUseCase {
   constructor(private readonly ticketRepository: TicketRepository) {}
@@ -11,7 +11,7 @@ export class AddTicketUseCaseImpl implements AddTicketUseCase {
     position: number,
     timestamp: string,
     status: string
-  ): Promise<TicketEntity> {
+  ): Promise<TicketModel> {
     if (
       status !== 'waiting' &&
       status !== 'attending' &&

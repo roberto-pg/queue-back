@@ -1,6 +1,6 @@
 import { customException } from '@src/data/errors'
+import { TicketModel } from '@src/data/models'
 import { TicketRepository } from '@src/data/protocols/ticket'
-import { TicketEntity } from '@src/domain/entities'
 import { LoadTicketsByStatusUseCase } from '@src/domain/protocols/ticket'
 import { VerifyQueueId } from '@src/validation'
 
@@ -12,7 +12,7 @@ export class LoadTicketsByStatusUseCaseImpl
     private readonly validate: VerifyQueueId
   ) {}
 
-  async call(queueId: string, status: string): Promise<TicketEntity[]> {
+  async call(queueId: string, status: string): Promise<TicketModel[]> {
     const queue = await this.validate.verifyQueueId(queueId)
 
     if (!queue) {

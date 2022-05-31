@@ -1,8 +1,8 @@
 import { TicketRepository } from '@src/data/protocols/ticket'
-import { TicketEntity } from '@src/domain/entities'
 import { LoadTicketsByQueueIdUseCase } from '@src/domain/protocols/ticket'
 import { VerifyQueueId } from '@src/validation'
 import { customException } from '@src/data/errors'
+import { TicketModel } from '@src/data/models'
 
 export class LoadTicketsByQueueIdUseCaseImpl
   implements LoadTicketsByQueueIdUseCase
@@ -12,7 +12,7 @@ export class LoadTicketsByQueueIdUseCaseImpl
     private readonly validate: VerifyQueueId
   ) {}
 
-  async call(queueId: string): Promise<TicketEntity[]> {
+  async call(queueId: string): Promise<TicketModel[]> {
     const queue = await this.validate.verifyQueueId(queueId)
 
     if (!queue) {

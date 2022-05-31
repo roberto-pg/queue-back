@@ -15,18 +15,18 @@ model Queue {
   title        String
   abbreviation String
   priority     Int
-  Ticket       Ticket[]
+  tickets      Ticket[]
 
   @@map("queues")
 }
 
 model Ticket {
   id        String   @id @default(uuid())
-  queue_id  String
   position  Int
   timestamp DateTime
   status    String
-  Queue     Queue?   @relation(fields: [queue_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  queue_id  String
+  queue     Queue    @relation(fields: [queue_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@map("tickets")
 }
