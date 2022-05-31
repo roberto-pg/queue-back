@@ -9,15 +9,15 @@ CREATE TABLE "queues" (
 );
 
 -- CreateTable
-CREATE TABLE "orders" (
+CREATE TABLE "tickets" (
     "id" TEXT NOT NULL,
-    "queue_id" TEXT NOT NULL,
     "position" INTEGER NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL,
     "status" TEXT NOT NULL,
+    "queue_id" TEXT NOT NULL,
 
-    CONSTRAINT "orders_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "tickets_pkey" PRIMARY KEY ("id")
 );
 
 -- AddForeignKey
-ALTER TABLE "orders" ADD CONSTRAINT "orders_queue_id_fkey" FOREIGN KEY ("queue_id") REFERENCES "queues"("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "tickets" ADD CONSTRAINT "tickets_queue_id_fkey" FOREIGN KEY ("queue_id") REFERENCES "queues"("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
