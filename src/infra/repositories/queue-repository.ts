@@ -36,6 +36,19 @@ export class QueueRepositoryImpl implements QueueRepository {
     return queues
   }
 
+  async loadByTitle(title: string): Promise<QueueModel | null> {
+    const queue = await this.prismaServer.connectPrisma().queue.findFirst({
+      where: {
+        title,
+      },
+      include: {
+        tickets: true,
+      },
+    })
+
+    return queue
+  }
+
   async removeQueueById(id: string): Promise<string> {
     const queue = await this.prismaServer.connectPrisma().queue.delete({
       where: {
