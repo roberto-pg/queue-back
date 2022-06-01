@@ -1,10 +1,13 @@
 import { TicketModel } from '@src/data/models/ticket'
+import { QueueRepository } from '@src/data/protocols/queue'
 import { TicketRepository } from '@src/data/protocols/ticket'
 import { HttpService } from '@src/infra/protocols'
-import { io } from '@src/main/server'
 
 export class TicketRepositoryImpl implements TicketRepository {
-  constructor(private readonly prismaServer: HttpService) {}
+  constructor(
+    private readonly prismaServer: HttpService,
+    private readonly queuerepository: QueueRepository
+  ) {}
 
   async addTicket(
     queueId: string,
@@ -20,6 +23,8 @@ export class TicketRepositoryImpl implements TicketRepository {
         status,
       },
     })
+
+    await this.queuerepository.load()
 
     return ticket
   }
@@ -51,13 +56,13 @@ export class TicketRepositoryImpl implements TicketRepository {
       },
     })
 
-    io.emit('load_tickets', tickets)
-
     return tickets
   }
 
   async removeTickets(): Promise<string> {
     await this.prismaServer.connectPrisma().ticket.deleteMany()
+
+    await this.queuerepository.load()
 
     return 'Tickets removidos'
   }

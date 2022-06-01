@@ -29,6 +29,9 @@ export class QueueRepositoryImpl implements QueueRepository {
       orderBy: {
         priority: 'desc',
       },
+      include: {
+        tickets: true,
+      },
     })
 
     io.emit('load_queues', queues)

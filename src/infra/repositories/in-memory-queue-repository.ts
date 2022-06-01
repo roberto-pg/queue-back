@@ -2,6 +2,7 @@ import { QueueRepository } from '@src/data/protocols/queue'
 import { QueueEntity } from '@src/domain/entities'
 import { QueueModel } from '@src/data/models'
 import { v4 as uuid } from 'uuid'
+import { customException } from '@src/data/errors'
 
 export class InMemoryQueueRepository implements QueueRepository {
   private queues: QueueModel[] = []
@@ -35,6 +36,10 @@ export class InMemoryQueueRepository implements QueueRepository {
     })
 
     return this.queues
+  }
+
+  async loadByTitle(title: string): Promise<QueueEntity | null> {
+    throw customException('unimplemented')
   }
 
   async removeQueueById(id: string): Promise<string> {
