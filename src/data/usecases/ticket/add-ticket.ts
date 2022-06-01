@@ -14,6 +14,7 @@ export class AddTicketUseCaseImpl implements AddTicketUseCase {
   ): Promise<TicketModel> {
     if (
       status !== 'waiting' &&
+      status !== 'called' &&
       status !== 'attending' &&
       status !== 'notFound' &&
       status !== 'finished'

@@ -1,14 +1,14 @@
 import { customException } from '@src/data/errors'
 import { TicketModel } from '@src/data/models'
 import { TicketRepository } from '@src/data/protocols/ticket'
-import { LoadTicketsByStatusUseCase } from '@src/domain/protocols/ticket'
+import { UpdateTicketStatusUseCase } from '@src/domain/protocols/ticket'
 
-export class LoadTicketsByStatusUseCaseImpl
-  implements LoadTicketsByStatusUseCase
+export class UpdateTicketStatusUseCaseImpl
+  implements UpdateTicketStatusUseCase
 {
   constructor(private readonly ticketRepository: TicketRepository) {}
 
-  async call(status: string): Promise<TicketModel[]> {
+  async call(id: string, status: string): Promise<TicketModel> {
     if (
       status !== 'waiting' &&
       status !== 'called' &&
@@ -19,7 +19,7 @@ export class LoadTicketsByStatusUseCaseImpl
       throw customException('Status inválido')
     }
 
-    const tickets = await this.ticketRepository.loadTicketsByStatus(status)
-    return tickets
+    const ticket = await this.ticketRepository.updateTicketStatus(id, status)
+    return ticket
   }
 }

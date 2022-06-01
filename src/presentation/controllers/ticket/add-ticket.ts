@@ -42,7 +42,7 @@ export class AddTicketController implements Controller {
         request.status
       )
 
-      return serverSuccess(ticket)
+      return serverSuccess(TicketViewModel.map(ticket))
     } catch (error) {
       return serverError(error)
     }

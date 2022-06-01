@@ -6,16 +6,13 @@ import {
 } from '@src/infra/repositories'
 import { LoadTicketsByStatusController } from '@src/presentation/controllers/ticket'
 import { Controller } from '@src/presentation/protocols/controller'
-import { VerifyQueueId } from '@src/validation'
 
 export const loadTicketsByStatusController = (): Controller => {
   const prisma = new PrismaServer()
-  const validation = new VerifyQueueId(prisma)
   const queueRepository = new QueueRepositoryImpl(prisma)
   const ticketRepository = new TicketRepositoryImpl(prisma, queueRepository)
   const loadTicketsByStatusUseCase = new LoadTicketsByStatusUseCaseImpl(
-    ticketRepository,
-    validation
+    ticketRepository
   )
 
   return new LoadTicketsByStatusController(loadTicketsByStatusUseCase)

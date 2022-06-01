@@ -2,6 +2,7 @@ import { TicketRepository } from '@src/data/protocols/ticket'
 import { customException } from '@src/data/errors'
 import { TicketModel } from '@src/data/models'
 import { v4 as uuid } from 'uuid'
+import { TicketEntity } from '@src/domain/entities'
 
 export class InMemoryTicketRepository implements TicketRepository {
   private tickets: TicketModel[] = []
@@ -40,10 +41,11 @@ export class InMemoryTicketRepository implements TicketRepository {
     throw customException('unimplemented')
   }
 
-  async loadTicketsByStatus(
-    queueId: string,
-    status: string
-  ): Promise<TicketModel[]> {
+  async loadTicketsByStatus(status: string): Promise<TicketModel[]> {
+    throw customException('unimplemented')
+  }
+
+  async updateTicketStatus(id: string, status: string): Promise<TicketEntity> {
     throw customException('unimplemented')
   }
 }

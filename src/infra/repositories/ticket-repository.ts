@@ -45,13 +45,9 @@ export class TicketRepositoryImpl implements TicketRepository {
     return tickets
   }
 
-  async loadTicketsByStatus(
-    queueId: string,
-    status: string
-  ): Promise<TicketModel[]> {
+  async loadTicketsByStatus(status: string): Promise<TicketModel[]> {
     const tickets = await this.prismaServer.connectPrisma().ticket.findMany({
       where: {
-        queue_id: queueId,
         status,
       },
     })
@@ -65,5 +61,18 @@ export class TicketRepositoryImpl implements TicketRepository {
     await this.queuerepository.load()
 
     return 'Tickets removidos'
+  }
+
+  async updateTicketStatus(id: string, status: string): Promise<TicketModel> {
+    const ticket = await this.prismaServer.connectPrisma().ticket.update({
+      data: {
+        status: status,
+      },
+      where: {
+        id,
+      },
+    })
+
+    return ticket
   }
 }

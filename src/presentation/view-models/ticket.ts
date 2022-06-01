@@ -4,10 +4,10 @@ export class TicketViewModel {
   static map(entity: TicketEntity): TicketViewModel {
     return {
       id: entity.id,
-      queueId: entity.queue_id,
       position: entity.position,
       timestamp: entity.timestamp.toISOString(),
       status: entity.status,
+      queueId: entity.queue_id,
     }
   }
 
