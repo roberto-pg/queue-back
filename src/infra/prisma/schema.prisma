@@ -21,12 +21,13 @@ model Queue {
 }
 
 model Ticket {
-  id        String   @id @default(uuid())
-  position  Int
-  timestamp DateTime
-  status    String
-  queue_id  String
-  queue     Queue    @relation(fields: [queue_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id           String   @id @default(uuid())
+  position     Int
+  timestamp    DateTime
+  status       String
+  queue_id     String
+  service_desk Int?
+  queue        Queue    @relation(fields: [queue_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@map("tickets")
 }

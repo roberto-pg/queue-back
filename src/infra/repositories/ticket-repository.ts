@@ -73,6 +73,8 @@ export class TicketRepositoryImpl implements TicketRepository {
       },
     })
 
+    await this.queuerepository.load()
+
     return ticket
   }
 }
