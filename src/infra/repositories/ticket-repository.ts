@@ -1,7 +1,6 @@
 import { TicketModel } from '@src/data/models/ticket'
 import { QueueRepository } from '@src/data/protocols/queue'
 import { TicketRepository } from '@src/data/protocols/ticket'
-import { TicketEntity } from '@src/domain/entities'
 import { HttpService } from '@src/infra/protocols'
 
 export class TicketRepositoryImpl implements TicketRepository {

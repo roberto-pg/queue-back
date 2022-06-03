@@ -18,6 +18,7 @@ export class InMemoryTicketRepository implements TicketRepository {
       position,
       timestamp: new Date(timestamp),
       status,
+      service_desk: null,
     }
 
     Object.assign(ticket, {

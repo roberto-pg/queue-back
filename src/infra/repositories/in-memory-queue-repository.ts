@@ -1,5 +1,4 @@
 import { QueueRepository } from '@src/data/protocols/queue'
-import { QueueEntity } from '@src/domain/entities'
 import { QueueModel } from '@src/data/models'
 import { v4 as uuid } from 'uuid'
 import { customException } from '@src/data/errors'
@@ -27,7 +26,7 @@ export class InMemoryQueueRepository implements QueueRepository {
     return this.queues[0]
   }
 
-  async load(): Promise<QueueEntity[]> {
+  async load(): Promise<QueueModel[]> {
     this.queues.push({
       id: uuid(),
       title: 'Load queue',
@@ -38,7 +37,7 @@ export class InMemoryQueueRepository implements QueueRepository {
     return this.queues
   }
 
-  async loadByTitle(title: string): Promise<QueueEntity | null> {
+  async loadByTitle(title: string): Promise<QueueModel | null> {
     throw customException('unimplemented')
   }
 
