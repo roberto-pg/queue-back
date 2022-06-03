@@ -5,6 +5,7 @@ import {
   loadTicketsByStatusController,
   loadTicketsControllers,
   removeTicketsController,
+  updateTicketServiceDeskController,
 } from '@src/main/factories/ticket'
 import { updateTicketStatusController } from '@src/main/factories/ticket/update-ticket-status'
 import { Router } from 'express'
@@ -25,6 +26,11 @@ export default (router: Router): void => {
   )
 
   router.patch('/update-status', adaptRoute(updateTicketStatusController()))
+
+  router.patch(
+    '/update-service-desk',
+    adaptRoute(updateTicketServiceDeskController())
+  )
 
   router.delete('/remove-tickets', adaptRoute(removeTicketsController()))
 }

@@ -1,6 +1,7 @@
 import { TicketModel } from '@src/data/models/ticket'
 import { QueueRepository } from '@src/data/protocols/queue'
 import { TicketRepository } from '@src/data/protocols/ticket'
+import { TicketEntity } from '@src/domain/entities'
 import { HttpService } from '@src/infra/protocols'
 
 export class TicketRepositoryImpl implements TicketRepository {
@@ -74,6 +75,22 @@ export class TicketRepositoryImpl implements TicketRepository {
     })
 
     await this.queuerepository.load()
+
+    return ticket
+  }
+
+  async updateTicketServiceDesk(
+    id: string,
+    serviceDesk: number
+  ): Promise<TicketModel> {
+    const ticket = await this.prismaServer.connectPrisma().ticket.update({
+      data: {
+        service_desk: serviceDesk,
+      },
+      where: {
+        id,
+      },
+    })
 
     return ticket
   }

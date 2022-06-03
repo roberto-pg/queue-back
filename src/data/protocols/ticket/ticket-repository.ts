@@ -12,4 +12,8 @@ export interface TicketRepository {
   removeTickets: () => Promise<string>
   loadTicketsByStatus: (status: string) => Promise<TicketModel[]>
   updateTicketStatus: (id: string, status: string) => Promise<TicketModel>
+  updateTicketServiceDesk: (
+    id: string,
+    serviceDesk: number
+  ) => Promise<TicketModel>
 }
