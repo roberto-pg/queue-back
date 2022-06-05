@@ -13,7 +13,8 @@ export class TicketRepositoryImpl implements TicketRepository {
     queueId: string,
     position: number,
     timestamp: string,
-    status: string
+    status: string,
+    queueAbb: string
   ): Promise<TicketModel> {
     const ticket = await this.prismaServer.connectPrisma().ticket.create({
       data: {
@@ -21,6 +22,7 @@ export class TicketRepositoryImpl implements TicketRepository {
         position,
         timestamp: new Date(timestamp),
         status,
+        queue_abb: queueAbb,
       },
     })
 

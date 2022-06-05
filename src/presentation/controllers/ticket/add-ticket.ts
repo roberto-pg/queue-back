@@ -10,6 +10,7 @@ type AddTicketRequest = {
   position: number
   timestamp: string
   status: string
+  queueAbb: string
 }
 
 export class AddTicketController implements Controller {
@@ -35,11 +36,16 @@ export class AddTicketController implements Controller {
         throw customException('Informe o status')
       }
 
+      if (!request.queueAbb) {
+        throw customException('Informe a abreviação da fila')
+      }
+
       const ticket = await this.addTicket.call(
         request.queueId,
         request.position,
         request.timestamp,
-        request.status
+        request.status,
+        request.queueAbb
       )
 
       return serverSuccess(TicketViewModel.map(ticket))

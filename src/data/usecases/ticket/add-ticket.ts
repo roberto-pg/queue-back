@@ -10,7 +10,8 @@ export class AddTicketUseCaseImpl implements AddTicketUseCase {
     queueId: string,
     position: number,
     timestamp: string,
-    status: string
+    status: string,
+    queueAbb: string
   ): Promise<TicketModel> {
     if (
       status !== 'waiting' &&
@@ -26,7 +27,8 @@ export class AddTicketUseCaseImpl implements AddTicketUseCase {
       queueId,
       position,
       timestamp,
-      status
+      status,
+      queueAbb
     )
 
     return ticket

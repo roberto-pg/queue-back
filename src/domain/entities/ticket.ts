@@ -5,5 +5,6 @@ export type TicketEntity = {
   timestamp: Date
   status: string
   queue_id: string
+  queue_abb: string
   service_desk: number | null
 }

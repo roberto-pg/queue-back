@@ -8,6 +8,7 @@ export class TicketViewModel {
       timestamp: entity.timestamp.toISOString(),
       status: entity.status,
       queueId: entity.queue_id,
+      queueAbb: entity.queue_abb,
       serviceDesk: entity.service_desk,
     }
   }

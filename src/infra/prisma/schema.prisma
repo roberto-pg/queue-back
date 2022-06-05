@@ -26,6 +26,7 @@ model Ticket {
   timestamp    DateTime
   status       String
   queue_id     String
+  queue_abb    String
   service_desk Int?
   queue        Queue    @relation(fields: [queue_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 

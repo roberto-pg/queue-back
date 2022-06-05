@@ -11,7 +11,8 @@ export class InMemoryTicketRepository implements TicketRepository {
     queueId: string,
     position: number,
     timestamp: string,
-    status: string
+    status: string,
+    queueAbb: string
   ): Promise<TicketModel> {
     const ticket: TicketModel = {
       queue_id: queueId,
@@ -19,6 +20,7 @@ export class InMemoryTicketRepository implements TicketRepository {
       timestamp: new Date(timestamp),
       status,
       service_desk: null,
+      queue_abb: queueAbb,
     }
 
     Object.assign(ticket, {

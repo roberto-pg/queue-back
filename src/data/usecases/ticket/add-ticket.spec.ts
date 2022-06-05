@@ -10,6 +10,7 @@ describe('Create new ticket', () => {
   const position = 5
   const timestamp = '2022-03-21 18:37:30'
   const status = 'waiting'
+  const queueAbb = 'PF'
 
   beforeAll(() => {
     ticketRepository = new InMemoryTicketRepository()
@@ -17,7 +18,13 @@ describe('Create new ticket', () => {
   })
 
   it('should be able to create a new ticket', async () => {
-    const ticket = await sut.call(queueId, position, timestamp, status)
+    const ticket = await sut.call(
+      queueId,
+      position,
+      timestamp,
+      status,
+      queueAbb
+    )
 
     expect(ticket).toHaveProperty('id')
     expect(ticket.position).toBe(5)

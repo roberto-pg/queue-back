@@ -5,6 +5,7 @@ export interface AddTicketUseCase {
     queueId: string,
     position: number,
     timestamp: string,
-    status: string
+    status: string,
+    queueAbb: string
   ) => Promise<TicketEntity>
 }

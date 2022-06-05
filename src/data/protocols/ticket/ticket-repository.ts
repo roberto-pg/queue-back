@@ -5,7 +5,8 @@ export interface TicketRepository {
     queueId: string,
     position: number,
     timestamp: string,
-    status: string
+    status: string,
+    queueAbb: string
   ) => Promise<TicketModel>
   loadTickets: () => Promise<TicketModel[]>
   loadTicketsByQueueId: (queueId: string) => Promise<TicketModel[]>
