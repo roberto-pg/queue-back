@@ -2,6 +2,8 @@ import { TicketModel } from '@src/data/models/ticket'
 import { QueueRepository } from '@src/data/protocols/queue'
 import { TicketRepository } from '@src/data/protocols/ticket'
 import { HttpService } from '@src/infra/protocols'
+import { io } from '@src/main/server'
+import { TicketViewModel } from '@src/presentation/view-models'
 
 export class TicketRepositoryImpl implements TicketRepository {
   constructor(
@@ -54,6 +56,9 @@ export class TicketRepositoryImpl implements TicketRepository {
       },
     })
 
+    const formattedTickets = TicketViewModel.mapCollection(tickets)
+    io.emit('tickets_called', formattedTickets)
+
     return tickets
   }
 
@@ -76,6 +81,7 @@ export class TicketRepositoryImpl implements TicketRepository {
     })
 
     await this.queuerepository.load()
+    await this.loadTicketsByStatus('called')
 
     return ticket
   }

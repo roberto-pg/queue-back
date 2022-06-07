@@ -16,7 +16,7 @@ export class AddTicketUseCaseImpl implements AddTicketUseCase {
     if (
       status !== 'waiting' &&
       status !== 'called' &&
-      status !== 'attending' &&
+      status !== 'beingAttended' &&
       status !== 'notFound' &&
       status !== 'finished'
     ) {

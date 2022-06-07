@@ -30,7 +30,11 @@ export class QueueRepositoryImpl implements QueueRepository {
         priority: 'desc',
       },
       include: {
-        tickets: true,
+        tickets: {
+          orderBy: {
+            timestamp: 'asc',
+          },
+        },
       },
     })
 
