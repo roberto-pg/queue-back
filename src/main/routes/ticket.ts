@@ -1,10 +1,11 @@
 import { adaptRoute } from '@src/main/adapters'
 import {
   addTicketController,
-  loadTicketsByQueueIdController,
+  loadTicketsByCallSequenceController,
   loadTicketsByStatusController,
   loadTicketsControllers,
   removeTicketsController,
+  updateTicketCallSequenceController,
   updateTicketServiceDeskController,
 } from '@src/main/factories/ticket'
 import { updateTicketStatusController } from '@src/main/factories/ticket/update-ticket-status'
@@ -16,8 +17,8 @@ export default (router: Router): void => {
   router.get('/tickets', adaptRoute(loadTicketsControllers()))
 
   router.get(
-    '/tickets-by-queue-id/:queueId',
-    adaptRoute(loadTicketsByQueueIdController())
+    '/tickets-by-call-sequence',
+    adaptRoute(loadTicketsByCallSequenceController())
   )
 
   router.get(
@@ -30,6 +31,11 @@ export default (router: Router): void => {
   router.patch(
     '/update-service-desk',
     adaptRoute(updateTicketServiceDeskController())
+  )
+
+  router.patch(
+    '/update-call-sequence',
+    adaptRoute(updateTicketCallSequenceController())
   )
 
   router.delete('/remove-tickets', adaptRoute(removeTicketsController()))

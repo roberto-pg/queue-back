@@ -36,15 +36,25 @@ export class TicketRepositoryImpl implements TicketRepository {
   async loadTickets(): Promise<TicketModel[]> {
     const tickets = await this.prismaServer.connectPrisma().ticket.findMany()
 
+    const formattedTickets = TicketViewModel.mapCollection(tickets)
+    io.emit('load_tickets', formattedTickets)
+
     return tickets
   }
 
-  async loadTicketsByQueueId(queueId: string): Promise<TicketModel[]> {
+  async loadTicketsByCallSequence(): Promise<TicketModel[]> {
     const tickets = await this.prismaServer.connectPrisma().ticket.findMany({
       where: {
-        queue_id: queueId,
+        call_sequence: {
+          gt: 0,
+        },
+      },
+      orderBy: {
+        call_sequence: 'desc',
       },
     })
+    const formattedTickets = TicketViewModel.mapCollection(tickets)
+    io.emit('tickets_by_call_sequence', formattedTickets)
 
     return tickets
   }
@@ -56,9 +66,6 @@ export class TicketRepositoryImpl implements TicketRepository {
       },
     })
 
-    const formattedTickets = TicketViewModel.mapCollection(tickets)
-    io.emit('tickets_called', formattedTickets)
-
     return tickets
   }
 
@@ -66,6 +73,7 @@ export class TicketRepositoryImpl implements TicketRepository {
     await this.prismaServer.connectPrisma().ticket.deleteMany()
 
     await this.queuerepository.load()
+    await this.loadTickets()
 
     return 'Tickets removidos'
   }
@@ -81,7 +89,8 @@ export class TicketRepositoryImpl implements TicketRepository {
     })
 
     await this.queuerepository.load()
-    await this.loadTicketsByStatus('called')
+    await this.loadTickets()
+    await this.loadTicketsByCallSequence()
 
     return ticket
   }
@@ -93,6 +102,22 @@ export class TicketRepositoryImpl implements TicketRepository {
     const ticket = await this.prismaServer.connectPrisma().ticket.update({
       data: {
         service_desk: serviceDesk,
+      },
+      where: {
+        id,
+      },
+    })
+
+    return ticket
+  }
+
+  async updateTicketCallSequence(
+    id: string,
+    callSequence: number
+  ): Promise<TicketModel> {
+    const ticket = await this.prismaServer.connectPrisma().ticket.update({
+      data: {
+        call_sequence: callSequence,
       },
       where: {
         id,

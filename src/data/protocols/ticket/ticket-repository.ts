@@ -9,12 +9,16 @@ export interface TicketRepository {
     queueAbb: string
   ) => Promise<TicketModel>
   loadTickets: () => Promise<TicketModel[]>
-  loadTicketsByQueueId: (queueId: string) => Promise<TicketModel[]>
+  loadTicketsByCallSequence: () => Promise<TicketModel[]>
   removeTickets: () => Promise<string>
   loadTicketsByStatus: (status: string) => Promise<TicketModel[]>
   updateTicketStatus: (id: string, status: string) => Promise<TicketModel>
   updateTicketServiceDesk: (
     id: string,
     serviceDesk: number
+  ) => Promise<TicketModel>
+  updateTicketCallSequence: (
+    id: string,
+    callSequence: number
   ) => Promise<TicketModel>
 }

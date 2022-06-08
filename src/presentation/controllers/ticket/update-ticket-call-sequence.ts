@@ -1,31 +1,31 @@
 import { customException } from '@src/data/errors'
-import { UpdateTicketServiceDeskUseCase } from '@src/domain/protocols/ticket'
+import { UpdateTicketCallSequenceUseCase } from '@src/domain/protocols/ticket'
 import { serverError, serverSuccess } from '@src/presentation/helpers'
 import { Controller } from '@src/presentation/protocols/controller'
 import { HttpResponse } from '@src/presentation/protocols/http'
 import { TicketViewModel } from '@src/presentation/view-models'
 
-type UpdateServiceDeskRequest = {
+type UpdateCallSequenceRequest = {
   id: string
-  serviceDesk: number
+  callSequence: number
 }
 
-export class UpdateTicketServiceDeskController implements Controller {
+export class UpdateTicketCallSequenceController implements Controller {
   constructor(
-    private readonly updateServiceDeskUseCase: UpdateTicketServiceDeskUseCase
+    private readonly updateCallSequenceUseCase: UpdateTicketCallSequenceUseCase
   ) {}
 
   async handle(
-    request: UpdateServiceDeskRequest
+    request: UpdateCallSequenceRequest
   ): Promise<HttpResponse<TicketViewModel>> {
     try {
       if (!request.id) {
         throw customException('Informe o ID do ticket')
       }
 
-      const ticket = await this.updateServiceDeskUseCase.call(
+      const ticket = await this.updateCallSequenceUseCase.call(
         request.id,
-        request.serviceDesk
+        request.callSequence
       )
       return serverSuccess(TicketViewModel.map(ticket))
     } catch (error) {

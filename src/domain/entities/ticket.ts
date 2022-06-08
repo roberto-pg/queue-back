@@ -7,4 +7,5 @@ export type TicketEntity = {
   queue_id: string
   queue_abb: string
   service_desk: number | null
+  call_sequence: number | null
 }

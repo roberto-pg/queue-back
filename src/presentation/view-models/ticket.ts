@@ -10,6 +10,7 @@ export class TicketViewModel {
       queueId: entity.queue_id,
       queueAbb: entity.queue_abb,
       serviceDesk: entity.service_desk,
+      callSequence: entity.call_sequence,
     }
   }
 

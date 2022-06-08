@@ -21,6 +21,7 @@ export class InMemoryTicketRepository implements TicketRepository {
       status,
       service_desk: null,
       queue_abb: queueAbb,
+      call_sequence: null,
     }
 
     Object.assign(ticket, {
@@ -36,7 +37,7 @@ export class InMemoryTicketRepository implements TicketRepository {
     throw customException('unimplemented')
   }
 
-  async loadTicketsByQueueId(queueId: string): Promise<TicketModel[]> {
+  async loadTicketsByCallSequence(): Promise<TicketModel[]> {
     throw customException('unimplemented')
   }
 
@@ -55,6 +56,13 @@ export class InMemoryTicketRepository implements TicketRepository {
   async updateTicketServiceDesk(
     id: string,
     serviceDesk: number
+  ): Promise<TicketEntity> {
+    throw customException('unimplemented')
+  }
+
+  async updateTicketCallSequence(
+    id: string,
+    callSequence: number
   ): Promise<TicketEntity> {
     throw customException('unimplemented')
   }
