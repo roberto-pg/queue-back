@@ -8,7 +8,7 @@ import { TicketViewModel } from '@src/presentation/view-models'
 export class TicketRepositoryImpl implements TicketRepository {
   constructor(
     private readonly prismaServer: HttpService,
-    private readonly queuerepository: QueueRepository
+    private readonly queueRepository: QueueRepository
   ) {}
 
   async addTicket(
@@ -28,7 +28,7 @@ export class TicketRepositoryImpl implements TicketRepository {
       },
     })
 
-    await this.queuerepository.load()
+    await this.queueRepository.load()
 
     return ticket
   }
@@ -50,7 +50,7 @@ export class TicketRepositoryImpl implements TicketRepository {
         },
       },
       orderBy: {
-        call_sequence: 'desc',
+        call_sequence: 'asc',
       },
     })
     const formattedTickets = TicketViewModel.mapCollection(tickets)
@@ -69,10 +69,20 @@ export class TicketRepositoryImpl implements TicketRepository {
     return tickets
   }
 
+  async loadTicketById(id: string): Promise<TicketModel | null> {
+    const ticket = await this.prismaServer.connectPrisma().ticket.findUnique({
+      where: {
+        id,
+      },
+    })
+
+    return ticket
+  }
+
   async removeTickets(): Promise<string> {
     await this.prismaServer.connectPrisma().ticket.deleteMany()
 
-    await this.queuerepository.load()
+    await this.queueRepository.load()
     await this.loadTickets()
 
     return 'Tickets removidos'
@@ -88,9 +98,8 @@ export class TicketRepositoryImpl implements TicketRepository {
       },
     })
 
-    await this.queuerepository.load()
+    await this.queueRepository.load()
     await this.loadTickets()
-    await this.loadTicketsByCallSequence()
 
     return ticket
   }
@@ -123,6 +132,8 @@ export class TicketRepositoryImpl implements TicketRepository {
         id,
       },
     })
+
+    await this.loadTicketsByCallSequence()
 
     return ticket
   }

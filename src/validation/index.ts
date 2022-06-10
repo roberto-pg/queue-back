@@ -1,2 +1,2 @@
-// export * from './verify-queue-id'
 export * from './verify-queue-title'
+export * from './verify-ticket-id'

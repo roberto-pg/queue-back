@@ -1,6 +1,7 @@
 import { adaptRoute } from '@src/main/adapters'
 import {
   addTicketController,
+  loadTicketByIdController,
   loadTicketsByCallSequenceController,
   loadTicketsByStatusController,
   loadTicketsControllers,
@@ -25,6 +26,8 @@ export default (router: Router): void => {
     '/tickets-by-status/:status',
     adaptRoute(loadTicketsByStatusController())
   )
+
+  router.get('/ticket-by-id/:id', adaptRoute(loadTicketByIdController()))
 
   router.patch('/update-status', adaptRoute(updateTicketStatusController()))
 
