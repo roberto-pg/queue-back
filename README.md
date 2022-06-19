@@ -4,7 +4,7 @@
 
 <br/>
 
-### This api uses socket-io for real-time call management, using priority level criteria. In addition, it allows viewing the ticket called and the last calls
+### This api uses socket-io for real-time call management, using priority level criteria. The routes have been structured to allow viewing of the ticket called and the last calls
 
 <br/>
 <br/>
